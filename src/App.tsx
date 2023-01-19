@@ -1,8 +1,11 @@
 import { Provider } from 'react-redux';
 import { CssBaseline, ThemeProvider } from '@mui/material';
+import { Routes } from 'react-router-dom';
+import { Route } from 'react-router';
 import { theme } from './global-styles/theme';
-import { ArticleList } from './components/article-list';
 import { store } from './store/store';
+import { AppRoutes } from './common/enums';
+import { ArticleInfo, Articles } from './pages';
 import './global-styles/global-styles.scss';
 
 function App() {
@@ -10,7 +13,10 @@ function App() {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline>
-          <ArticleList />
+          <Routes>
+            <Route path={AppRoutes.ARTICLES} element={<Articles />} />
+            <Route path={AppRoutes.ARTICLE_INFO} element={<ArticleInfo />} />
+          </Routes>
         </CssBaseline>
       </ThemeProvider>
     </Provider>
