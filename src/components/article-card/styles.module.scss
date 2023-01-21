@@ -1,0 +1,80 @@
+@import '../../global-styles/variables';
+@import '../../global-styles/mixins';
+
+.card {
+  max-width: 400px;
+  height: 480px;
+
+  @media (min-width: $bp-sm) {
+    height: 530px;
+  }
+
+  .picture {
+    height: 190px;
+
+    @media (min-width: $bp-sm) {
+      height: 217px;
+    }
+  }
+
+  .cardContent {
+    @include flex-column;
+    padding: $gap-20;
+    height: calc(100% - 190px);
+    &:last-child {
+      padding-bottom: $gap-20;
+    }
+
+    @media (min-width: $bp-sm) {
+      padding: $gap-25;
+      height: calc(100% - 217px);
+      &:last-child {
+        padding-bottom: $gap-25;
+      }
+    }
+
+    .date {
+      @include flex-row;
+      align-items: center;
+      opacity: 0.6;
+
+      p {
+        margin-left: 8px;
+        font-size: $fs-caption;
+      }
+    }
+
+    .title {
+      @include text-ellipsis(-webkit-line-clamp, 2);
+      height: 58px;
+      margin-top: $gap-20;
+      margin-bottom: $gap-15;
+      font-size: $fs-heading;
+      line-height: 1.2em;
+
+      @media (min-width: $bp-sm) {
+        margin-top: $gap-25;
+        margin-bottom: $gap-20;
+      }
+    }
+
+    .description {
+      @include text-ellipsis(-webkit-line-clamp, 4);
+      font-size: $fs-text-sm;
+      line-height: 1.5em;
+    }
+
+    .btn {
+      margin-top: auto;
+      align-self: flex-start;
+      justify-content: space-between;
+      padding: 0;
+      width: 110px;
+      height: 24px;
+      font-size: $fs-text-sm;
+      font-weight: $fw-bold;
+      color: $text;
+      text-transform: none;
+    }
+  }
+}
