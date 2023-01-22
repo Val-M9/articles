@@ -1,8 +1,10 @@
 import { FC, useEffect } from 'react';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import { selectArticles } from '../../store/selectors';
 import { fetchArticles } from '../../store/actions';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { ArticleCard, ArticleList } from '../../components';
+import { ArticleCard, ArticleList, SearchInput } from '../../components';
+import styles from './styles.module.scss';
 
 const Articles: FC = () => {
   const articles = useAppSelector(selectArticles);
@@ -13,17 +15,13 @@ const Articles: FC = () => {
   }, [dispatch]);
 
   return (
-    <ArticleList>
-      {articles.map((article) => (
-        <ArticleCard
-          id={article.id}
-          imageUrl={article.imageUrl}
-          title={article.title}
-          publishedAt={article.publishedAt}
-          summary={article.summary}
-        />
-      ))}
-    </ArticleList>
+    <Box className={styles.wrapper}>
+      <Box className={styles.container}>
+        <Typography variant="h5">Filter by keywords</Typography>
+        <SearchInput placeholder="Search articles" style={styles.search} />
+        <ArticleList articles={articles} />
+      </Box>
+    </Box>
   );
 };
 

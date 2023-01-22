@@ -2,6 +2,7 @@
 @import '../../global-styles/mixins';
 
 .card {
+  justify-self: center;
   max-width: 400px;
   height: 480px;
 
@@ -21,6 +22,12 @@
     @include flex-column;
     padding: $gap-20;
     height: calc(100% - 190px);
+    border-right: 1px solid $border;
+    border-bottom: 1px solid $border;
+    border-left: 1px solid $border;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
     &:last-child {
       padding-bottom: $gap-20;
     }

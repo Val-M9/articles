@@ -1,17 +1,11 @@
 @import '../../global-styles/variables';
+@import '../../global-styles/mixins';
 
-.container {
-  max-width: $max-desktop;
+.wrapper {
   margin: 0 auto;
+  max-width: $max-desktop;
 
-  .listWrapper {
-    justify-content: center;
-    padding-left: $gap-10;
-    padding-right: $gap-10;
-
-    @media (min-width: $bp-sm) {
-      padding-left: $gap-15;
-      padding-right: $gap-15;
-    }
+  .container {
+    @include flex-column;
   }
 }

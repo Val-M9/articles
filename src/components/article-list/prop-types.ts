@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
+import { ArticleDto } from './../../common/types/article-dto';
 
 export type ArticleListProps = {
-  children: ReactNode;
+  articles: ArticleDto[];
 };
