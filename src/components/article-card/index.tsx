@@ -13,7 +13,7 @@ const ArticleCard: FC<Partial<ArticleDto>> = ({ id, imageUrl, publishedAt, title
   }
 
   return (
-    <Grid item key={id}>
+    <Grid item xs={4} sm={4} md={4} key={id} display="grid">
       <Card className={styles.card}>
         <CardMedia component="img" alt="poster" image={imageUrl} className={styles.picture} />
         <CardContent className={styles.cardContent}>

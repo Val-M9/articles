@@ -1,0 +1,23 @@
+@import '../../global-styles/variables.scss';
+
+.search {
+  width: 47%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  border: 1px solid $border !important;
+  border-radius: 5px !important;
+
+  & input {
+    height: 20px;
+    font-size: $fs-text-sm;
+    color: $text-light;
+  }
+
+  .icon {
+    padding-left: 6px;
+    margin-right: 20px;
+
+    path {
+      color: $text-light;
+    }
+  }
+}

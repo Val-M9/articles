@@ -1,0 +1,28 @@
+@import '../../global-styles/variables';
+@import '../../global-styles/mixins';
+
+.wrapper {
+  margin: 50px auto 63px;
+  max-width: $max-desktop;
+
+  .container {
+    @include flex-column;
+    margin-left: $gap-10;
+    margin-right: $gap-10;
+
+    @media (min-width: $bp-sm) {
+      margin-left: $gap-20;
+      margin-right: $gap-20;
+    }
+
+    h5 {
+      font-size: $fs-text-sm;
+      font-weight: $fw-semi-bold;
+    }
+
+    .search {
+      margin-top: 10px;
+      margin-bottom: 40px;
+    }
+  }
+}

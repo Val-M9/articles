@@ -1,15 +1,21 @@
 import { FC } from 'react';
-import { Grid, Box } from '@mui/material';
+import { Grid } from '@mui/material';
+import { ArticleCard } from '../article-card';
 import { ArticleListProps } from './prop-types';
-import styles from './styles.module.scss';
 
-const ArticleList: FC<ArticleListProps> = ({ children }) => {
+const ArticleList: FC<ArticleListProps> = ({ articles }) => {
   return (
-    <Box className={styles.container}>
-      <Grid container spacing={{ xs: 3, md: 5 }} columns={3} className={styles.listWrapper}>
-        {children}
-      </Grid>
-    </Box>
+    <Grid container spacing={{ xs: 3, sm: 5, md: 5 }} columns={{ xs: 1, sm: 8, md: 12 }}>
+      {articles.map((article) => (
+        <ArticleCard
+          id={article.id}
+          imageUrl={article.imageUrl}
+          title={article.title}
+          publishedAt={article.publishedAt}
+          summary={article.summary}
+        />
+      ))}
+    </Grid>
   );
 };
 
