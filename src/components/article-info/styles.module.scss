@@ -1,0 +1,57 @@
+@import '../../global-styles/variables';
+@import '../../global-styles/mixins';
+
+.wrapper {
+  @include flex-column;
+  align-items: center;
+
+  .picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 245px;
+    object-fit: cover;
+  }
+
+  .article {
+    margin: $gap-150 $gap-10 $gap-35 $gap-10;
+    padding: $gap-25 $gap-25 $gap-35 $gap-25;
+    max-width: $max-desktop;
+    min-height: calc(100vh - 245px);
+    border: 1px solid $border;
+    box-shadow: $drop-shadow;
+    z-index: 100;
+
+    @media (min-width: $bp-sm) {
+      margin: $gap-150 $gap-20 $gap-35 $gap-20;
+      padding: $gap-25 $gap-35 $gap-35 $gap-35;
+    }
+
+    @media (min-width: $bp-lg) {
+      margin: $gap-150 $gap-10 $gap-35 $gap-10;
+      padding: $gap-35 $gap-75 $gap-50 $gap-75;
+    }
+
+    & h2 {
+      margin: 0 auto;
+      padding-bottom: $gap-50;
+      max-width: calc($max-desktop / 2);
+      font-size: $fs-heading;
+      font-weight: $fw-regular;
+      line-height: 1.2em;
+      text-align: center;
+    }
+
+    & p {
+      margin-bottom: $gap-20;
+      font-size: $fs-text;
+      font-weight: $fw-regular;
+      line-height: 1.5em;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

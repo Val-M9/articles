@@ -8,6 +8,7 @@ const ArticleList: FC<ArticleListProps> = ({ articles }) => {
     <Grid container spacing={{ xs: 3, sm: 5, md: 5 }} columns={{ xs: 1, sm: 8, md: 12 }}>
       {articles.map((article) => (
         <ArticleCard
+          key={article.id}
           id={article.id}
           imageUrl={article.imageUrl}
           title={article.title}
