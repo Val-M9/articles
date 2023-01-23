@@ -5,7 +5,7 @@ import { Route } from 'react-router';
 import { theme } from './global-styles/theme';
 import { store } from './store/store';
 import { AppRoutes } from './common/enums';
-import { ArticleInfo, Articles } from './pages';
+import { ArticlePage, Articles } from './pages';
 import './global-styles/global-styles.scss';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <CssBaseline>
           <Routes>
             <Route path={AppRoutes.ARTICLES} element={<Articles />} />
-            <Route path={AppRoutes.ARTICLE_INFO} element={<ArticleInfo />} />
+            <Route path={AppRoutes.ARTICLE_INFO} element={<ArticlePage />} />
           </Routes>
         </CssBaseline>
       </ThemeProvider>

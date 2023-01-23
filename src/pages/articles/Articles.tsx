@@ -1,10 +1,11 @@
 import { FC, useEffect } from 'react';
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { selectArticles } from '../../store/selectors';
 import { fetchArticles } from '../../store/actions';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { ArticleCard, ArticleList, SearchInput } from '../../components';
+import { ArticleList, SearchInput } from '../../components';
 import styles from './styles.module.scss';
+import { useLocation } from 'react-router-dom';
 
 const Articles: FC = () => {
   const articles = useAppSelector(selectArticles);

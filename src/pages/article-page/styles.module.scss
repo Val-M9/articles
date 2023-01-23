@@ -1,0 +1,16 @@
+@import '../../global-styles/variables.scss';
+@import '../../global-styles/mixins.scss';
+
+.wrapper {
+  position: relative;
+  margin: 0 auto;
+  max-width: $desktop-full;
+
+  .btn {
+    @include btn-overrides(margin, auto auto $gap-50 $gap-75);
+
+    & p {
+      @include btn-text(margin-left, 6px);
+    }
+  }
+}
