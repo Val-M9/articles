@@ -1,16 +1,18 @@
 import { createReducer, isAnyOf } from '@reduxjs/toolkit';
 import { ArticleDto } from '../common/types';
 import { DataStatus } from './../common/enums';
-import { fetchArticles } from './actions';
+import { fetchArticles, fetchOneArticle } from './actions';
 
 type InitialState = {
   dataStatus: DataStatus;
   articles: ArticleDto[];
+  currentArticle: ArticleDto | null;
 };
 
 const initialState: InitialState = {
   dataStatus: DataStatus.IDLE,
   articles: [],
+  currentArticle: null,
 };
 
 const articlesReducer = createReducer(initialState, (builder) => {
@@ -19,7 +21,11 @@ const articlesReducer = createReducer(initialState, (builder) => {
       state.dataStatus = DataStatus.FULFILLED;
       state.articles = payload;
     })
-    .addMatcher(isAnyOf(fetchArticles.pending), (state) => {
+    .addCase(fetchOneArticle.fulfilled, (state, { payload }) => {
+      state.dataStatus = DataStatus.FULFILLED;
+      state.currentArticle = payload;
+    })
+    .addMatcher(isAnyOf(fetchArticles.pending, fetchOneArticle.pending), (state) => {
       state.dataStatus = DataStatus.PENDING;
     });
 });

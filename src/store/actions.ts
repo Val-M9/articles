@@ -8,10 +8,19 @@ const fetchArticles = createAsyncThunk<ArticleDto[], undefined, AsyncThunkConfig
   async (_, { extra }) => {
     const { apiCall } = extra;
     const response = await apiCall.getArticles();
-    console.log(response);
 
     return response;
   },
 );
 
-export { fetchArticles };
+const fetchOneArticle = createAsyncThunk<ArticleDto, string, AsyncThunkConfig>(
+  ArticlesActions.FETCH_ONE_ARTICLE,
+  async (articleId, { extra }) => {
+    const { apiCall } = extra;
+    const response = await apiCall.getById(articleId);
+
+    return response;
+  },
+);
+
+export { fetchArticles, fetchOneArticle };
