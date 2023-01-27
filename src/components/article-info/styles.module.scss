@@ -44,13 +44,16 @@
     }
 
     & p {
-      margin-bottom: $gap-20;
       font-size: $fs-text;
       font-weight: $fw-regular;
       line-height: 1.5em;
 
-      &:last-child {
-        margin-bottom: 0;
+      &:nth-child(2) {
+        margin-bottom: $gap-20;
+      }
+
+      &:nth-child(10) {
+        margin-bottom: $gap-20;
       }
     }
   }

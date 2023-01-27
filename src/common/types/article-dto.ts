@@ -20,3 +20,8 @@ export type ArticleDto = {
   launches: Launches[];
   events: Events[];
 };
+
+export type Articles = {
+  articlesInfo: ArticleDto[];
+  totalCount: number;
+};

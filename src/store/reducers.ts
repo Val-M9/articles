@@ -1,17 +1,17 @@
 import { createReducer, isAnyOf } from '@reduxjs/toolkit';
-import { ArticleDto } from '../common/types';
+import { ArticleDto, Articles } from '../common/types';
 import { DataStatus } from './../common/enums';
 import { fetchArticles, fetchOneArticle } from './actions';
 
 type InitialState = {
   dataStatus: DataStatus;
-  articles: ArticleDto[];
+  articles: Articles;
   currentArticle: ArticleDto | null;
 };
 
 const initialState: InitialState = {
   dataStatus: DataStatus.IDLE,
-  articles: [],
+  articles: { articlesInfo: [], totalCount: 0 },
   currentArticle: null,
 };
 

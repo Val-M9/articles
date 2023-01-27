@@ -1,13 +1,13 @@
-import { ArticleDto } from './../common/types/article-dto';
+import { ArticleDto, Articles } from './../common/types/article-dto';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AsyncThunkConfig } from './../common/types';
+import { AsyncThunkConfig, ArticleQueryParams } from './../common/types';
 import { ArticlesActions } from './action-types';
 
-const fetchArticles = createAsyncThunk<ArticleDto[], undefined, AsyncThunkConfig>(
+const fetchArticles = createAsyncThunk<Articles, Readonly<ArticleQueryParams>, AsyncThunkConfig>(
   ArticlesActions.FETCH_ARTICLES,
-  async (_, { extra }) => {
+  async (queryParams, { extra }) => {
     const { apiCall } = extra;
-    const response = await apiCall.getArticles();
+    const response = await apiCall.getArticles(queryParams);
 
     return response;
   },
