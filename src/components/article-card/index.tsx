@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React from 'react';
 import { Box, Button, Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { formatDate } from '../../helpers';
@@ -7,27 +7,32 @@ import { AppRoutes } from '../../common/enums';
 import { ArrowRight, Calendar } from '../svg';
 import styles from './styles.module.scss';
 
-const ArticleCard: FC<Partial<ArticleDto>> = ({ id, imageUrl, publishedAt, title, summary }) => {
+const ArticleCard = React.forwardRef<HTMLDivElement, Partial<ArticleDto>>((props, ref) => {
   let date = '--/--/----';
 
-  if (publishedAt) {
-    date = formatDate(publishedAt);
+  if (props.publishedAt) {
+    date = formatDate(props.publishedAt);
   }
 
   return (
-    <Grid item xs={4} sm={4} md={4} key={id} display="grid">
-      <NavLink to={`${AppRoutes.ARTICLES}${id}`} className={styles.cardWrapper}>
+    <Grid ref={ref} item xs={4} sm={4} md={4} key={props.id} display="grid">
+      <NavLink to={`${AppRoutes.ARTICLES}${props.id}`} className={styles.cardWrapper}>
         <Card className={styles.card}>
-          <CardMedia component="img" alt="poster" image={imageUrl} className={styles.picture} />
+          <CardMedia
+            component="img"
+            alt="poster"
+            image={props.imageUrl}
+            className={styles.picture}
+          />
           <CardContent className={styles.cardContent}>
             <Box className={styles.date}>
               <Calendar />
               <Typography>{date}</Typography>
             </Box>
             <Typography variant="h3" className={styles.title}>
-              {title}
+              {props.title}
             </Typography>
-            <Typography className={styles.description}>{summary}</Typography>
+            <Typography className={styles.description}>{props.summary}</Typography>
             <Button className={styles.btn}>
               <Typography>Read more</Typography>
               <ArrowRight />
@@ -37,6 +42,6 @@ const ArticleCard: FC<Partial<ArticleDto>> = ({ id, imageUrl, publishedAt, title
       </NavLink>
     </Grid>
   );
-};
+});
 
 export { ArticleCard };

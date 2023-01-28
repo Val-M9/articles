@@ -1,0 +1,12 @@
+.loaderBox {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 47%;
+  }
+}

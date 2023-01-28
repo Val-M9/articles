@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ArticleDto } from '../common/types';
+import { ArticleDto, Articles, ArticleQueryParams } from '../common/types';
 import { APP_URL } from './../common/constants';
 
 const instance = axios.create({
@@ -10,10 +10,18 @@ const instance = axios.create({
 });
 
 const apiCall = {
-  async getArticles(): Promise<ArticleDto[]> {
-    const response = await instance.get('/articles');
+  async getArticles({ query, start, limit }: ArticleQueryParams): Promise<Articles> {
+    if (query) {
+      const response = await instance.get(
+        `/articles?title_contains=${query}&_start=${start}&_limit=${limit}`,
+      );
+      const count = await instance.get(`/articles/count?title_contains=${query}`);
+      return { articlesInfo: response.data, totalCount: count.data };
+    }
+    const response = await instance.get(`/articles?_start=${start}`);
+    const count = await instance.get(`/articles/count`);
 
-    return response.data;
+    return { articlesInfo: response.data, totalCount: count.data };
   },
 
   async getById(id: string): Promise<ArticleDto> {

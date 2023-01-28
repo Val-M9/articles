@@ -2,7 +2,15 @@ import { ArticleDto, AppState } from './../common/types';
 import { DataStatus } from '../common/enums';
 
 const selectArticles = (state: AppState): ArticleDto[] => {
-  return state.articles.articles;
+  return state.articles.articles.articlesInfo;
+};
+
+const selectArticlesTotalCount = (state: AppState): number => {
+  return state.articles.articles.totalCount;
+};
+
+const selectCurrentCount = (state: AppState): number => {
+  return state.articles.count;
 };
 
 const selectCurrentArticle = (state: AppState): ArticleDto | null => {
@@ -13,4 +21,10 @@ const selectArticlesDataStatus = (state: AppState): DataStatus => {
   return state.articles.dataStatus;
 };
 
-export { selectArticles, selectArticlesDataStatus, selectCurrentArticle };
+export {
+  selectArticles,
+  selectArticlesTotalCount,
+  selectArticlesDataStatus,
+  selectCurrentArticle,
+  selectCurrentCount,
+};
