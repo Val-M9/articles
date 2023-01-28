@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { apiCall } from '../api/api-call';
-import { articlesReducer } from './reducers';
+import { articlesReducer } from './reducer';
 
 export const extraArgument = {
   apiCall,

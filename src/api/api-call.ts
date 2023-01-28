@@ -10,20 +10,16 @@ const instance = axios.create({
 });
 
 const apiCall = {
-  async getArticles({ query, start }: ArticleQueryParams): Promise<Articles> {
+  async getArticles({ query, start, limit }: ArticleQueryParams): Promise<Articles> {
     if (query) {
-      const response = await instance.get(`/articles?title_contains=${query}&_start=${start}`);
+      const response = await instance.get(
+        `/articles?title_contains=${query}&_start=${start}&_limit=${limit}`,
+      );
       const count = await instance.get(`/articles/count?title_contains=${query}`);
-      console.log('count', count);
-      console.log('response', response.data);
-
       return { articlesInfo: response.data, totalCount: count.data };
     }
     const response = await instance.get(`/articles?_start=${start}`);
     const count = await instance.get(`/articles/count`);
-
-    console.log('count', count);
-    console.log('response', response);
 
     return { articlesInfo: response.data, totalCount: count.data };
   },
