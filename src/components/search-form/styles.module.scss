@@ -1,0 +1,9 @@
+@import '../../global-styles/variables.scss';
+
+.search {
+  & h4 {
+    font-size: $fs-text-sm;
+    font-weight: $fw-semi-bold;
+    margin-bottom: $gap-10;
+  }
+}

@@ -1,3 +1,5 @@
+import { ArticleDto } from '../../common/types';
+
 export type ArticleListProps = {
-  totalCount: number;
+  articles: ArticleDto[];
 };

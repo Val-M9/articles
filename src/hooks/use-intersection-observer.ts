@@ -1,6 +1,6 @@
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 
-type IntersectionObserverProps = {
+export type IntersectionObserverProps = {
   currentCount: number;
   totalCount: number;
   observer: React.MutableRefObject<IntersectionObserver | null>;
@@ -17,12 +17,13 @@ export const useIntersectionObserver = ({
   itemsList,
   onIntersectCallback,
 }: IntersectionObserverProps) => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     const options = {
       root: document,
       rootMargin: '0px',
-      threshold: 0.5,
+      threshold: 0.9,
     };
+
     const callback = (entries: Array<IntersectionObserverEntry>) => {
       if (entries[0].isIntersecting && currentCount < totalCount) {
         onIntersectCallback();
