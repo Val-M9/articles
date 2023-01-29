@@ -18,17 +18,10 @@
     h5 {
       font-size: $fs-text-sm;
       font-weight: $fw-semi-bold;
-
-      &:nth-of-type(2) {
-        margin-top: $gap-40;
-        margin-bottom: $gap-45;
-        padding-bottom: 5px;
-        border-bottom: 1px solid $border;
-      }
-    }
-
-    .search {
-      margin-top: 10px;
+      margin-top: $gap-40;
+      margin-bottom: $gap-45;
+      padding-bottom: 5px;
+      border-bottom: 1px solid $border;
     }
   }
 }

@@ -1,5 +1,5 @@
 import { ArticleDto, Articles } from './../common/types/article-dto';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { AsyncThunkConfig, ArticleQueryParams } from './../common/types';
 import { ArticlesActions } from './action-types';
 
@@ -23,4 +23,6 @@ const fetchOneArticle = createAsyncThunk<ArticleDto, string, AsyncThunkConfig>(
   },
 );
 
-export { fetchArticles, fetchOneArticle };
+const setSearchQuery = createAction<string>(ArticlesActions.SET_SEARCH_QUERY);
+
+export { fetchArticles, fetchOneArticle, setSearchQuery };

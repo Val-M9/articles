@@ -1,12 +1,17 @@
+@import '../../global-styles/variables.scss';
+
 .loaderBox {
   position: relative;
-  width: 100vw;
+  max-width: $max-desktop;
   min-height: 100vh;
-  height: 100%;
 
   .loader {
     position: absolute;
-    top: 50%;
-    left: 47%;
+    top: 40%;
+    left: 35%;
+
+    @media (min-width: $bp-sm) {
+      left: 50%;
+    }
   }
 }

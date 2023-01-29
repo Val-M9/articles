@@ -21,10 +21,15 @@ const selectArticlesDataStatus = (state: AppState): DataStatus => {
   return state.articles.dataStatus;
 };
 
+const selectSearchQuery = (state: AppState): string => {
+  return state.articles.searchQuery;
+};
+
 export {
   selectArticles,
   selectArticlesTotalCount,
   selectArticlesDataStatus,
   selectCurrentArticle,
   selectCurrentCount,
+  selectSearchQuery,
 };

@@ -1,19 +1,21 @@
 import { FC } from 'react';
 import { TextField, InputAdornment } from '@mui/material';
-import { SearchIcon } from '../svg/';
-import { SearchProps } from './prop-types';
+import { InputProps } from './prop-types';
 import styles from './styles.module.scss';
 
-const SearchInput: FC<SearchProps> = ({ placeholder, style }) => {
+const Input: FC<InputProps> = ({ placeholder, style, value, onChange, Icon }) => {
   return (
     <TextField
       variant="outlined"
       placeholder={placeholder}
       className={`${styles.search} ${style}`}
+      name="search"
+      value={value}
+      onChange={onChange}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start" className={styles.icon}>
-            <SearchIcon />
+            <Icon />
           </InputAdornment>
         ),
       }}
@@ -21,4 +23,4 @@ const SearchInput: FC<SearchProps> = ({ placeholder, style }) => {
   );
 };
 
-export { SearchInput };
+export { Input };

@@ -11,14 +11,14 @@ const instance = axios.create({
 
 const apiCall = {
   async getArticles({ query, start, limit }: ArticleQueryParams): Promise<Articles> {
-    if (query) {
+    if (Boolean(query)) {
       const response = await instance.get(
         `/articles?title_contains=${query}&_start=${start}&_limit=${limit}`,
       );
       const count = await instance.get(`/articles/count?title_contains=${query}`);
       return { articlesInfo: response.data, totalCount: count.data };
     }
-    const response = await instance.get(`/articles?_start=${start}`);
+    const response = await instance.get(`/articles?_start=${start}&_limit=${limit}`);
     const count = await instance.get(`/articles/count`);
 
     return { articlesInfo: response.data, totalCount: count.data };
