@@ -1,15 +1,25 @@
 @import '../../global-styles/variables.scss';
 
 .search {
-  width: 46%;
+  width: 100%;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   border: 1px solid $border !important;
   border-radius: 5px !important;
 
+  @media (min-width: $bp-sm) {
+    width: 46%;
+  }
+
   & input {
     height: 20px;
+    padding: 10px 10px 10px 0px;
     font-size: $fs-text-sm;
     color: $text-light;
+
+    @media (min-width: $bp-md) {
+      height: 20px;
+      padding: 16px 14px 16px 0px;
+    }
   }
 
   .icon {

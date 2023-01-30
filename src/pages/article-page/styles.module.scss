@@ -7,7 +7,15 @@
   max-width: $desktop-full;
 
   .btn {
-    @include btn-overrides(margin, auto auto $gap-50 $gap-75);
+    @include btn-overrides(margin, auto auto $gap-50 $gap-10);
+
+    @media (min-width: $bp-sm) {
+      @include btn-overrides(margin, auto auto $gap-50 $gap-20);
+    }
+
+    @media (min-width: $bp-md) {
+      @include btn-overrides(margin, auto auto $gap-50 $gap-75);
+    }
 
     & p {
       @include btn-text(margin-left, 6px);
